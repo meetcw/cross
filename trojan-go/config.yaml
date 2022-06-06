@@ -1,0 +1,31 @@
+run-type: server
+local-addr: 127.0.0.1
+local-port: 1080
+remote-addr: 127.0.0.1
+remote-port: 80
+password:
+  - ${PASSWORD}
+ssl:
+  cert: ${CERT_PATH}/fullchain.pem
+  key: ${CERT_PATH}/privkey.pem
+  sni: ${TROJAN_DOMAIN}
+  fallback-addr: 127.0.0.1
+  fallback-port: 444
+websocket:
+  enabled: true
+  path: /api/ws
+  host: ${TROJAN_DOMAIN}
+tcp:
+  no-delay: true
+  keep-alive: true
+  prefer-ipv4: false
+# mux:
+#   enabled: false
+#   concurrency: 8
+#   idle-timeout: 60
+# router:
+#   enabled: true
+#   block:
+#     - 'geoip:private'
+#   geoip: geoip.dat
+#   geosite: geosite.dat

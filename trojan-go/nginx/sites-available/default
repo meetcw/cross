@@ -1,0 +1,21 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    listen [::]:444 ssl ipv6only=on;
+    listen 444 ssl; 
+    ssl_certificate ${CERT_PATH}/fullchain.pem; 
+    ssl_certificate_key ${CERT_PATH}/privkey.pem; 
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; 
+
+    server_name ${DOMAIN} ${TROJAN_DOMAIN} _;
+
+    index index.html;
+
+    root /var/www/trojan-go-site;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
