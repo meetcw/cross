@@ -6,9 +6,9 @@ envsubst < ./nginx/nginx.conf > /etc/nginx/nginx.conf
 mkdir -p /etc/nginx/sites-available
 envsubst < ./nginx/sites-available/default > /etc/nginx/sites-available/default
 
-cp -r ./nginx/mask /var/www/
-envsubst < ./nginx/mask/index.html > /var/www/mask/index.html
-envsubst < ./nginx/mask/api/cross.yaml > /var/www/mask/api/cross
+cp -r ./virtual-site /var/www/virtual-site
+envsubst < ./virtual-site/index.html > /var/www/virtual-site/index.html
+envsubst < ./virtual-site/api/cross.yaml > /var/www/virtual-site/api/cross
 
 mkdir -p /etc/trojan-go
 envsubst < ./config.yaml > /etc/trojan-go/config.yaml
