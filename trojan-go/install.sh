@@ -1,9 +1,5 @@
 #!/bin/sh
 
-echo "applying enviroment variables"
-
-export $(grep -v '^#' .env | xargs -d '\n')
-
 if ! command -v trojan-go &> /dev/null;
 then
     echo "trojan-go not found, downloading..."
