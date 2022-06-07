@@ -6,15 +6,15 @@ remote-port: 80
 password:
   - ${PASSWORD}
 ssl:
-  cert: ${CERT_PATH}/fullchain.pem
-  key: ${CERT_PATH}/privkey.pem
-  sni: ${TROJAN_DOMAIN}
+  cert: ${CERTIFICATE_PATH}/fullchain.pem
+  key: ${CERTIFICATE_PATH}/privkey.pem
+  sni: ${DOMAIN}
   fallback-addr: 127.0.0.1
   fallback-port: 444
 websocket:
   enabled: true
   path: /api/ws
-  host: ${TROJAN_DOMAIN}
+  host: ${DOMAIN}
 tcp:
   no-delay: true
   keep-alive: true

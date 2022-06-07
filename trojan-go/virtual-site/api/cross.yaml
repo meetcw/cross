@@ -36,23 +36,23 @@ dns:
 proxies:
   - name: ${NODE}
     type: trojan
+    server: ${SERVER}
+    port: 443
+    password: ${PASSWORD}
+    sni: ${DOMAIN}
+    udp: false
+  - name: ${NODE} WS
+    type: trojan
     server: ${DOMAIN}
     port: 443
     password: ${PASSWORD}
-    sni: ${TROJAN_DOMAIN}
-    udp: false
-  - name: Cloudflare > ${NODE}
-    type: trojan
-    server: ${TROJAN_DOMAIN}
-    port: 443
-    password: ${PASSWORD}
     network: ws
-    sni: ${TROJAN_DOMAIN}
+    sni: ${DOMAIN}
     udp: false
     ws-opts:
       path: /api/ws
       headers:
-        Host: ${TROJAN_DOMAIN}
+        Host: ${DOMAIN}
 proxy-groups:
   - name: Automatic
     type: url-test
