@@ -1,11 +1,11 @@
 #!/bin/bash
 
-export $(grep -v '^#' .env | xargs)
-
 set -o allexport
 source ./.env
 set +o allexport
 
+
+if ! command -v trojan-go &> /dev/null;
 then
     echo "trojan-go not found, downloading..."
     wget https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip
