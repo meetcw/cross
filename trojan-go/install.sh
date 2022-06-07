@@ -1,9 +1,10 @@
 #!/bin/sh
 
 echo "applying enviroment variables"
-export $(grep -v '^#' .env | xargs)
 
-if ! command -v trojan-go &> /dev/null
+source .env
+
+if ! command -v trojan-go &> /dev/null;
 then
     echo "trojan-go not found, downloading..."
     wget https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip
