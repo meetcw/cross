@@ -58,14 +58,14 @@ proxy-groups:
     type: url-test
     proxies:
       - ${NODE}
-      - Cloudflare > ${NODE}
+      - ${NODE} WS
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: Fallback
     type: fallback
     proxies:
       - ${NODE}
-      - Cloudflare > ${NODE}
+      - ${NODE} WS
     url: http://www.gstatic.com/generate_204
     interval: 300
   - name: Manual
@@ -74,7 +74,7 @@ proxy-groups:
       - Automatic
       - Fallback
       - ${NODE}
-      - Cloudflare > ${NODE}
+      - ${NODE} WS
   - name: Final
     type: select
     proxies:
