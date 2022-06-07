@@ -10,7 +10,7 @@ then
     unzip trojan-go-linux-amd64.zip -d /tmp/trojan-go
     cp /tmp/trojan-go/trojan-go /usr/bin/
     rm trojan-go-linux-amd64.zip
-if
+fi
 
 echo "applying config..."
 mkdir -p /etc/nginx
