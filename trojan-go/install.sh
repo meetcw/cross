@@ -2,7 +2,7 @@
 
 echo "applying enviroment variables"
 
-source .env
+export $(grep -v '^#' .env | xargs -d '\n')
 
 if ! command -v trojan-go &> /dev/null;
 then
