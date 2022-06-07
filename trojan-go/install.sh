@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+export $(grep -v '^#' .env | xargs)
 
 if ! command -v trojan-go &> /dev/null;
 then
