@@ -20,6 +20,7 @@ envsubst < ./nginx/nginx.conf | sed -e 's/§/$/g' > /etc/nginx/nginx.conf
 mkdir -p /etc/nginx/sites-available
 envsubst < ./nginx/sites-available/default | sed -e 's/§/$/g' > /etc/nginx/sites-available/default
 
+mkdir -p /var/www
 cp -r ./virtual-site /var/www/virtual-site
 envsubst < ./virtual-site/index.html > /var/www/virtual-site/index.html
 envsubst < ./virtual-site/api/cross.yaml > /var/www/virtual-site/api/cross
