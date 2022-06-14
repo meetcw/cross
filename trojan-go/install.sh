@@ -23,7 +23,6 @@ envsubst < ./nginx/sites-available/default | sed -e 's/§/$/g' > /etc/nginx/site
 mkdir -p /var/www
 cp -r ./virtual-site /var/www/virtual-site
 envsubst < ./virtual-site/index.html > /var/www/virtual-site/index.html
-envsubst < ./virtual-site/api/cross.yaml > /var/www/virtual-site/api/cross
 
 mkdir -p /etc/trojan-go
 envsubst < ./config.yaml > /etc/trojan-go/config.yaml
