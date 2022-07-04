@@ -6,8 +6,8 @@ remote-port: 80
 password:
   - ${PASSWORD}
 ssl:
-  cert: ${CERTIFICATE_PATH}/fullchain.pem
-  key: ${CERTIFICATE_PATH}/privkey.pem
+  cert: ${CERTIFICATE_FULLCHAIN}
+  key: ${CERTIFICATE_KEY}
   sni: ${DOMAIN}
   fallback-addr: 127.0.0.1
   fallback-port: 444
