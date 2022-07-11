@@ -8,24 +8,14 @@ password:
 ssl:
   cert: ${CERTIFICATE_FULLCHAIN}
   key: ${CERTIFICATE_KEY}
-  sni: ${DOMAIN}
+  sni: ${SNI}
   fallback-addr: 127.0.0.1
   fallback-port: 444
 websocket:
   enabled: true
   path: /api/ws
-  host: ${DOMAIN}
+  host: ${SNI}
 tcp:
   no-delay: true
   keep-alive: true
   prefer-ipv4: false
-# mux:
-#   enabled: false
-#   concurrency: 8
-#   idle-timeout: 60
-# router:
-#   enabled: true
-#   block:
-#     - 'geoip:private'
-#   geoip: geoip.dat
-#   geosite: geosite.dat

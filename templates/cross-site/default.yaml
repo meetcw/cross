@@ -1,0 +1,49 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: :9090
+
+proxies:
+  - name: ${NAME}
+    type: trojan
+    server: ${SERVER}
+    port: 443
+    password: ${PASSWORD}
+    sni: ${DOMAIN}
+    udp: false
+
+
+proxy-groups:
+  - name: Automatic
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - ${NAME}
+  - name: Fallback
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - ${NAME}
+  - name: Manual
+    type: select
+    proxies:
+      - Automatic
+      - Fallback
+      - ${NAME}
+  - name: Final
+    type: select
+    proxies:
+      - Manual
+      - DIRECT
+
+rules:
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,Final
+
+
+
