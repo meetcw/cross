@@ -21,8 +21,8 @@ cp ./templates/trojan-go.service /usr/lib/systemd/system/trojan-go.service
 
 echo "Applying config..."
 mkdir -p /etc/nginx
-if [ ! -f "/etc/nginx/nginx.conf" ];then mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup; fi
-if [ ! -f "/etc/nginx/sites-available/default" ];then mv ./etc/nginx/sites-available/default /etc/nginx/sites-available/default.backup; fi
+if [ -f "/etc/nginx/nginx.conf" ];then mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup; fi
+if [ -f "/etc/nginx/sites-available/default" ];then mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.backup; fi
 envsubst < ./templates/nginx/nginx.conf | sed -e 's/§/$/g' > /etc/nginx/nginx.conf
 mkdir -p /etc/nginx/sites-available
 envsubst < ./templates/nginx/sites-available/default | sed -e 's/§/$/g' > /etc/nginx/sites-available/default

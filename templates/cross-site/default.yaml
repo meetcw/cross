@@ -11,8 +11,8 @@ proxies:
     server: ${SERVER}
     port: 443
     password: ${PASSWORD}
-    sni: ${DOMAIN}
-    udp: true
+    sni: ${SNI}
+    udp: false
 
 
 proxy-groups:

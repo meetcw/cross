@@ -2,8 +2,8 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
-    listen [::]:444 ssl ipv6only=on;
-    listen 444 ssl; 
+    listen [::]:444 ssl ipv6only=on proxy_protocol;
+    listen 444 ssl proxy_protocol; 
     ssl_certificate ${CERTIFICATE_FULLCHAIN}; 
     ssl_certificate_key ${CERTIFICATE_KEY}; 
 
