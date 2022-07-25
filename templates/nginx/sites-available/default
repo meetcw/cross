@@ -24,6 +24,5 @@ server {
     location / {
         root /var/www/cross-site;
         try_files §uri §uri/ =403;
-        error_page 403 =301 http://speedtest.tele2.net/1000GB.zip;
     }
 }
