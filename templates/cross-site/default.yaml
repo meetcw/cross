@@ -13,7 +13,18 @@ proxies:
     password: ${PASSWORD}
     sni: ${SNI}
     udp: false
-
+  - name: ${NAME}(WS)
+    type: trojan
+    network: ws
+    server: ${SNI}
+    port: 443
+    password: ${PASSWORD}
+    sni: ${SNI}
+    udp: false
+    ws-opts:
+      path: /api/ws
+      headers:
+        Host: ${SNI}
 
 proxy-groups:
   - name: Automatic
@@ -22,18 +33,21 @@ proxy-groups:
     interval: 300
     proxies:
       - ${NAME}
+      - ${NAME}(WS)
   - name: Fallback
     type: fallback
     url: http://www.gstatic.com/generate_204
     interval: 300
     proxies:
       - ${NAME}
+      - ${NAME}(WS)
   - name: Manual
     type: select
     proxies:
       - Automatic
       - Fallback
       - ${NAME}
+      - ${NAME}(WS)
   - name: Final
     type: select
     proxies:
