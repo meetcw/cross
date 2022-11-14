@@ -16,7 +16,7 @@ proxies:
   - name: ${NAME}(WS)
     type: trojan
     network: ws
-    server: ${SNI}
+    server: ${WS_SERVER}
     port: 443
     password: ${PASSWORD}
     sni: ${SNI}
